@@ -1,39 +1,5 @@
 version: "3"
 services:
-  leaguestats-server:
-    container_name: leaguestats-server
-    build: 
-      context: ./server
-      dockerfile: Dockerfile
-    ports:
-      - '3333:3333'
-    volumes:
-      - ./server:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - DB_CONNECTION=pg
-      - PG_HOST=leaguestats-postgres
-      - PG_PORT=5432
-      - PG_USER=root
-      - PG_PASSWORD=root
-      - PG_DB_NAME=leaguestats
-      - REDIS_HOST=leaguestats-redis
-      - REDIS_PORT=6379
-      - PORT=3333
-      - HOST=0.0.0.0
-      - APP_KEY=Qxjj6PTMC_7TDmpysNgr-G-nfd0R847Q
-      - DRIVE_DISK=local
-      - REDIS_CONNECTION=local
-      - REDIS_PASSWORD=
-      - RIOT_API_KEY=RGAPI-903ee591-66f9-48e2-8df2-1b46c631537f
-      - BULL_REDIS_HOST=127.0.0.1
-      - BULL_REDIS_PORT=6379
-      - BULL_REDIS_PASSWORD=
-    depends_on:
-      - leaguestats-postgres
-      - leaguestats-redis
-
   leaguestats-redis:
     container_name: leaguestats-redis
     image: redis:6-alpine
