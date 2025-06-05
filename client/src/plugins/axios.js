@@ -8,7 +8,7 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.baseURL = import.meta.env.DEV
   ? 'http://localhost:3333/'
-  :  'http://198.199.71.206:3333/' || 'https://api.leaguestats.gg/'
+  :  'https://league-stats-alpha.vercel.app/' || 'https://api.leaguestats.gg/'
 
 const CancelToken = axios.CancelToken
 const axiosSource = CancelToken.source()
