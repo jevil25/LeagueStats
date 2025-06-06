@@ -28,6 +28,9 @@ Route.get('/', async () => ({
 
 Route.get('/health', async () => ({ report: await HealthCheck.getReport() }))
 
+Route.post('/league/tournaments', 'LeaguesController.tournaments')
+Route.post('/league/series', 'LeaguesController.series')
+
 Route.post('/summoner/basic', 'SummonersController.basic')
 Route.post('/summoner/overview', 'SummonersController.overview')
 

@@ -35,6 +35,7 @@ export default Env.rules({
   REDIS_PASSWORD: Env.schema.string.optional(),
 
   RIOT_API_KEY: Env.schema.string(),
+  GRID_API_KEY: Env.schema.string(),
 
   BULL_REDIS_HOST: Env.schema.string({ format: 'host' }),
   BULL_REDIS_PORT: Env.schema.number(),
