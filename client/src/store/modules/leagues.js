@@ -13,6 +13,12 @@ export const state = {
     loading: false,
     error: null,
     currentTournamentId: null
+  },
+  seriesState: {
+    data: null,
+    loading: false,
+    error: null,
+    currentSeriesId: null
   }
 }
 
@@ -47,6 +53,19 @@ export const mutations = {
   SERIES_ERROR(state, error) {
     state.series.error = error
     state.series.loading = false
+  },
+  SERIES_STATE_REQUEST(state, seriesId) {
+    state.seriesState.loading = true
+    state.seriesState.error = null
+    state.seriesState.currentSeriesId = seriesId
+  },
+  SERIES_STATE_SUCCESS(state, data) {
+    state.seriesState.data = data.data.seriesState
+    state.seriesState.loading = false
+  },
+  SERIES_STATE_ERROR(state, error) {
+    state.seriesState.error = error
+    state.seriesState.loading = false
   }
 }
 
@@ -75,6 +94,21 @@ export const actions = {
       commit('SERIES_ERROR', error?.response?.data?.error || 'Failed to fetch tournament series')
       throw error
     }
+  },
+  async getSeriesState({ commit }, { seriesId, gameFinished, gameStarted }) {
+    try {
+      commit('SERIES_STATE_REQUEST', seriesId)
+      const response = await axios.post('/league/series/state', {
+        seriesId,
+        gameFinished,
+        gameStarted
+      })
+      commit('SERIES_STATE_SUCCESS', response.data)
+      return response.data
+    } catch (error) {
+      commit('SERIES_STATE_ERROR', error?.response?.data?.error || 'Failed to fetch series state')
+      throw error
+    }
   }
 }
 
@@ -84,5 +118,8 @@ export const getters = {
   currentTournamentSeries: state => state.series.data,
   seriesLoading: state => state.series.loading,
   seriesError: state => state.series.error,
-  currentTournamentId: state => state.series.currentTournamentId
+  currentTournamentId: state => state.series.currentTournamentId,
+  currentSeriesState: state => state.seriesState.data,
+  seriesStateLoading: state => state.seriesState.loading,
+  seriesStateError: state => state.seriesState.error
 }
