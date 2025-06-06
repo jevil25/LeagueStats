@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as cdragon from '@/store/modules/cdragon'
 import * as detailedMatch from '@/store/modules/detailedMatch'
+import * as leagues from '@/store/modules/leagues'
 import * as notification from '@/store/modules/notification'
 import * as settings from '@/store/modules/settings'
 import * as summoner from '@/store/modules/summoner'
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   modules: {
     cdragon,
     detailedMatch,
+    leagues,
     notification,
     settings,
     summoner,

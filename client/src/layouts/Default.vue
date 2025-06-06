@@ -23,6 +23,20 @@
 
         <div class="flex-1">
           <div class="flex items-center justify-end">  
+            <router-link
+              to="/"
+              :class="{ 'text-white': $route.name === 'home' }"
+              class="px-4 py-2 text-blue-200 hover:text-white"
+            >
+              Tournaments
+            </router-link>
+            <router-link
+              to="/summoner"
+              :class="{ 'text-white': $route.name === 'summoner-search' }"
+              class="px-4 py-2 text-blue-200 hover:text-white"
+            >
+              Summoner Search
+            </router-link>
           </div>
         </div>
       </div>

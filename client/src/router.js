@@ -11,6 +11,14 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
+      component: () => import('@/views/LeagueHome.vue'),
+      meta: {
+        layout: 'Home',
+      },
+    },
+    {
+      path: '/summoner',
+      name: 'summoner-search',
       component: () => import('@/views/Home.vue'),
       meta: {
         layout: 'Home',
@@ -44,6 +52,14 @@ const router = new Router({
       path: '/summoner/:region/:name/live',
       name: 'summonerLive',
       component: () => import('@/views/SummonerLive.vue'),
+    },
+    {
+      path: '/tournament/:id',
+      name: 'tournament-details',
+      component: () => import('@/views/TournamentDetails.vue'),
+      meta: {
+        layout: 'Home',
+      },
     },
   ],
 })
